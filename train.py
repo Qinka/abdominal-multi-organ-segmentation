@@ -14,16 +14,13 @@ from loss.ava_Dice_loss import DiceLoss
 from dataset.dataset import train_ds
 
 
-# 定义超参数
-on_server = True
-
 def do_train(ct_dir, seg_dir, gpus = 1, cudnn_ben_en = True, Epoch = 3000, learning_rate= 1e-4, batch_size = 1, num_workers = 1):
 
     # hyper-parameters
     on_server = gpus > 1
     cudnn.benchmark = cudnn_ben_en
     batch_size *= gpus
-    num_workers = num_workers if on_server is False else
+    num_workers = num_workers if on_server is False else gpus
     pin_memory = False if on_server is False else True
     cvd = "0"
     i = 1
