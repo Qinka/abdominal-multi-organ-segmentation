@@ -230,9 +230,10 @@ def init(module):
         nn.init.kaiming_normal(module.weight.data, 0.25)
         nn.init.constant(module.bias.data, 0)
 
-
-net = Net(training=True)
-net.apply(init)
+def getNet ():
+    net = Net(training=True)
+    net.apply(init)
+    return net
 
 # # 输出数据维度检查
 # net = net.cuda()
