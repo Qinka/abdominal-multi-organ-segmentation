@@ -9,13 +9,12 @@ import torch
 import torch.backends.cudnn as cudnn
 from torch.utils.data import DataLoader
 
-from net.ResUnet import net
+from net.ResUnet import getNet
 from loss.ava_Dice_loss import DiceLoss
 from dataset.dataset import train_ds
 
 
 def do_train(ct_dir, seg_dir, gpus = 1, cudnn_ben_en = True, Epoch = 3000, learning_rate= 1e-4, batch_size = 1, num_workers = 1):
-    global net
     # hyper-parameters
     on_server = gpus > 1
     cudnn.benchmark = cudnn_ben_en
@@ -28,7 +27,7 @@ def do_train(ct_dir, seg_dir, gpus = 1, cudnn_ben_en = True, Epoch = 3000, learn
         cvd += "," + str(i)
     os.environ['CUDA_VISIBLE_DEVICES'] = cvd
 
-    net = torch.nn.DataParallel(net).cuda()
+    net = torch.nn.DataParallel(getNet()).cuda()
 
     # 定义数据加载
     train_dl = DataLoader(train_ds(ct_dir, seg_dir), batch_size, True, num_workers=num_workers, pin_memory=pin_memory)
