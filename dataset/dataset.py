@@ -56,12 +56,15 @@ class Dataset(dataset):
         return len(self.ct_list)
 
 
-ct_dir = '/home/zcy/Desktop/train/CT/' \
-    if on_server is False else './train/CT/'
-seg_dir = '/home/zcy/Desktop/train/GT/' \
-    if on_server is False else './train/GT/'
+# ct_dir = '/home/zcy/Desktop/train/CT/' \
+#     if on_server is False else './train/CT/'
+# seg_dir = '/home/zcy/Desktop/train/GT/' \
+#     if on_server is False else './train/GT/'
 
-train_ds = Dataset(ct_dir, seg_dir)
+def train_ds(ct_dir, seg_dir):
+    Dataset(ct_dir, seg_dir)
+
+# train_ds = Dataset(ct_dir, seg_dir)
 
 
 # # 测试代码
