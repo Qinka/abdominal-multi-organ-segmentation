@@ -15,7 +15,7 @@ from dataset.dataset import train_ds
 
 
 def do_train(ct_dir, seg_dir, gpus = 1, cudnn_ben_en = True, Epoch = 3000, learning_rate= 1e-4, batch_size = 1, num_workers = 1):
-
+    local net
     # hyper-parameters
     on_server = gpus > 1
     cudnn.benchmark = cudnn_ben_en
