@@ -63,7 +63,7 @@ class Dataset(dataset):
 #     if on_server is False else './train/GT/'
 
 def train_ds(ct_dir, seg_dir):
-    Dataset(ct_dir, seg_dir)
+    return Dataset(ct_dir, seg_dir)
 
 # train_ds = Dataset(ct_dir, seg_dir)
 
