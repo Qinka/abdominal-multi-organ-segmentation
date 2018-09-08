@@ -17,7 +17,8 @@ class Dataset(dataset):
     def __init__(self, ct_dir, seg_dir):
 
         self.ct_list = os.listdir(ct_dir)
-        self.seg_list = list(map(lambda x: x.replace('img', 'label'), self.ct_list))
+        self.seg_list = os.listdir(seg_dir)
+        #self.seg_list = list(map(lambda x: x.replace('img', 'label'), self.ct_list))
 
         self.ct_list = list(map(lambda x: os.path.join(ct_dir, x), self.ct_list))
         self.seg_list = list(map(lambda x: os.path.join(seg_dir, x), self.seg_list))
